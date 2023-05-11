@@ -26,8 +26,7 @@
 4. *Monitoramento e deploy*
   
 - Configurar o Amazon CloudWatch para monitorar os recursos da infraestrutura, como CPU, memória RAM e tráfego de rede, e enviar   alertas em caso de problemas.
-- Utilizar o AWS CodeDeploy para realizar o deploy das atualizações do Moodle. Com essa ferramenta, é possível automatizar o processo   de atualização do sistema, minimizando o tempo de inatividade da aplicação.
-- Utilizar o AWS Cloud
+- Elastic Beanstalk para simplificar o processo de deploy e gerenciamento de aplicações web em vários ambientes, incluindo testes, homologação e produção.
   
 ## Arquitetura do ambiente
 
