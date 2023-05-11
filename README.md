@@ -28,8 +28,10 @@
 - Configurar o Amazon CloudWatch para monitorar os recursos da infraestrutura, como CPU, memória RAM e tráfego de rede, e enviar   alertas em caso de problemas.
 - Elastic Beanstalk para simplificar o processo de deploy e gerenciamento de aplicações web em vários ambientes, incluindo testes, homologação e produção.
   
-## Arquitetura do ambiente
-
+## Arquitetura do ambiente  
+  
+![aws-arquitetura](https://github.com/deciocferreira/AWS-Cloud-Project/assets/12403699/59756357-7a70-4e97-b504-170643f99f76)
+ 
 ## Resultados esperados
   
 - Redução de custos com infraestrutura e manutenção de servidores;
