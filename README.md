@@ -21,11 +21,12 @@
   
 3. *Segurança*
   
+- VPC.  
 - Grupos de segurança no RDS e outro no EC2.
 - AWS WAF (Web Application Firewall).
 - AWS Shield.
   
-  >  Assim aplicamos camadas de segurança para permitir apenas as conexões necessárias para o Moodle operar. Protegemos ele contra ataques na camada de aplicação, como injeção de SQL ou cross-site scripting (XSS) e contra ataques DDoS (Distributed Denial of Service).
+  >  Assim aplicamos camadas de segurança para permitir apenas as conexões necessárias para o Moodle operar. Fora da AWS fica protegido contra ataques na camada de aplicação, como injeção de SQL ou cross-site scripting (XSS) e contra ataques DDoS (Distributed Denial of Service) e dentro abrangindo os elementos, permitindo que eles se comuniquem entre si e com a Internet de forma segura e isolada.
   
 4. *Monitoramento e deploy*
   
@@ -37,11 +38,11 @@
   
 ## Arquitetura do ambiente  
   
-<image src="https://github.com/deciocferreira/AWS-Cloud-Project/assets/12403699/79215028-8898-4566-abc9-6d6a6f7de769" width="750" height="700">  
+<image src="https://github.com/deciocferreira/AWS-Cloud-Project/assets/12403699/d545746b-d70e-4f10-8c2b-9c9d1e1d3bd3" width="750" height="700"> 
  
 ## Resultados esperados
-  
-- Redução de custos com infraestrutura e manutenção de servidores;
+
+- Alta disponibilidade;
   
 - Maior escalabilidade e flexibilidade para lidar com picos de tráfego e demanda;
   
@@ -53,12 +54,6 @@
   
 - Melhor visibilidade e monitoramento do ambiente, permitindo uma resposta mais rápida a problemas e falhas.   
   
-- Alta disponibilidade: a arquitetura proposta utiliza vários recursos e técnicas para garantir alta disponibilidade. O uso do Amazon ECS e Auto Scaling garante que a aplicação esteja sempre disponível, mesmo em caso de falhas em uma ou mais instâncias. Além disso, o uso de múltiplas zonas de disponibilidade e balanceamento de carga distribui o tráfego de forma equilibrada, reduzindo a chance de interrupções no serviço.
+- Backup e Recuperação de Desastres;
 
--  Escalabilidade: a arquitetura proposta é altamente escalável, permitindo que a aplicação cresça de forma elástica de acordo com as necessidades de negócios. O Amazon ECS e o Auto Scaling garantem que o número de instâncias possa aumentar ou diminuir automaticamente, conforme necessário, sem afetar a disponibilidade ou o desempenho.
-
-- Segurança: a arquitetura proposta também é projetada para ser segura. A utilização de várias camadas de segurança, como VPC, grupos de segurança e SSL, reduz a possibilidade de ataques e invasões maliciosas.
-
-- Monitoramento: a arquitetura proposta é altamente monitorada, permitindo uma visão clara do desempenho e saúde da aplicação. O uso de ferramentas de monitoramento, como o Amazon CloudWatch e o Amazon S3, garante que os dados estejam sempre disponíveis e acessíveis para a análise e tomada de decisões.
-
-- Backup e Recuperação de Desastres: A arquitetura proposta inclui uma estratégia de backup e recuperação de desastres, permitindo a restauração rápida da aplicação em caso de falhas ou desastres. O uso do Amazon RDS com replicação em várias zonas e a utilização de snapshots garantem a disponibilidade dos dados e uma recuperação rápida em caso de falhas.
+- Redução de custos com infraestrutura e manutenção de servidores.
