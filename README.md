@@ -1,36 +1,43 @@
-# AWS-Cloud-Project <image src="https://user-images.githubusercontent.com/12403699/234434276-e7cdcab8-c594-47a6-8862-7645e5740a2c.png" width="80" height="50">  
+# AWS Cloud Project <image src="https://user-images.githubusercontent.com/12403699/234434276-e7cdcab8-c594-47a6-8862-7645e5740a2c.png" width="80" height="50">  
   
 ## Proposta de arquitetura para migração de uma plataforma de educação para AWS.
   
 1. *Banco de Dados*
   
-- Criação de um banco de dados MySQL RDS (Relational Database Service) com a configuração db.r5.large, que possui 2 vCPUs e 16 GB de      memória RAM para garantir a alta disponibilidade e tolerância a falhas.
-- Configurar o RDS com a opção de Multi-AZ, permitindo a replicação automática de dados para um banco de dados standby em uma zona de disponibilidade diferente. 
-- Configurar backups diários automatizados do banco de dados.
+- MySQL RDS (Relational Database Service) com a configuração **db.r5.large**, que possui **2 vCPUs e 16 GB** de memória RAM. Adicionar opção de Multi-AZ.
+- Backups diários automatizados do banco de dados.
+  
+  > Desta forma teremos a replicação automática de dados para um banco de dados standby e backups contínuos em uma zona de disponibilidade diferente para garantir a alta disponibilidade e tolerância a falhas.
   
 2. *Aplicação*
   
-- Criar uma instância EC2 (Elastic Compute Cloud) do tipo t3.large com o sistema operacional Linux e o AMI (Amazon Machine Image) do    Moodle, que já inclui o PHP e o Apache, necessários para rodar o Moodle.
-- Anexar um volume EBS (Elastic Block Store) de 200 GB para armazenar os arquivos da aplicação e do sistema operacional.
-- Configurar o Auto Scaling, com o mínimo de 1, o desejado de 2 e o máximo de 4 instâncias EC2. Isso permitirá que a infraestrutura   se adapte automaticamente à demanda de acesso do sistema, escalando ou reduzindo o número de instâncias de acordo com a demanda,  ajudando a manter a estabilidade e evitar quedas do sistema.
-- Utilizar um Load Balancer do tipo Application Load Balancer para distribuir o tráfego entre as instâncias EC2 do Moodle. Isso       garantirá a alta disponibilidade da aplicação, uma vez que caso alguma instância apresente problemas, as outras continuarão respondendo às requisições.
-- Configurar o Auto Scaling para adicionar novas instâncias EC2 ao grupo quando a CPU ou a memória RAM atingir um determinado limite, definido pelo administrador, permitindo atender aos picos de demanda de acesso previstos pelo cliente.
-- Utilizar o Amazon CloudFront para distribuir os conteúdos estáticos (imagens e vídeos) da aplicação, permitindo que os mesmos sejam cacheados em diversos pontos de presença (PoPs) em todo o mundo, garantindo assim uma maior rapidez no acesso aos recursos pelos usuários finais.
+- Instâncias EC2 (Elastic Compute Cloud) do tipo **t3.large** com **2 vCPUs e 8 GB de RAM**, sistema operacional Linux e o AMI (Amazon Machine Image) do Moodle, que já inclui o PHP e o Apache, necessários para executá-lo.
+- Armazenamento será um volume EBS (Elastic Block Store) de 50 GB para os arquivos da aplicação e do sistema operacional em cada instância, um Bucket S3 para os arquivos estáticos e de mídia e outro para guardar os logs do CloudFront.
+- Auto Scaling com o mínimo de 1, desejado de 2 e o máximo de 4 instâncias com triggers de adicão de novas instâncias EC2 ao grupo quando a CPU ou a memória RAM atingir um determinado limite.
+- Load Balancer do tipo Application Load Balancer para distribuir o tráfego entre as instâncias EC2 do Moodle. 
+- Utilizar o Amazon CloudFront para distribuir os conteúdos estáticos (imagens e vídeos) da aplicação.
+  
+  > Isso permitirá que a infraestrutura se adapte automaticamente à demanda de acesso, escalando ou reduzindo o número de instâncias, mantendo a estabilidade e evitando quedas do sistema garantindo a alta disponibilidade da aplicação. Uma vez que alguma instância apresente problemas, outras continuarão respondendo às requisições tolerando picos de acesso imprevistos pelo cliente. O conteúdo vai ficar em diversos pontos de presença, garantindo assim uma maior rapidez no acesso aos recursos pelos usuários finais.
   
 3. *Segurança*
   
-- Configurar um grupo de segurança no RDS e outro no EC2 para permitir apenas as conexões necessárias para a operação do Moodle. Por   exemplo, permitir conexões na porta 80 apenas para o Load Balancer, e permitir conexões na porta 22 apenas para os administradores do    sistema.
-- Utilizar o AWS WAF (Web Application Firewall) para proteger a aplicação contra ataques na camada de aplicação, como injeção de SQL ou cross-site scripting (XSS).  
-- Utilizar o AWS Shield para proteger contra ataques DDoS (Distributed Denial of Service).
+- Grupos de segurança no RDS e outro no EC2.
+- AWS WAF (Web Application Firewall).
+- AWS Shield.
+  
+  >  Assim aplicamos camadas de segurança para permitir apenas as conexões necessárias para o Moodle operar. Protegemos ele contra ataques na camada de aplicação, como injeção de SQL ou cross-site scripting (XSS) e contra ataques DDoS (Distributed Denial of Service).
   
 4. *Monitoramento e deploy*
   
-- Configurar o Amazon CloudWatch para monitorar os recursos da infraestrutura, como CPU, memória RAM e tráfego de rede, e enviar   alertas em caso de problemas.
-- Elastic Beanstalk para simplificar o processo de deploy e gerenciamento de aplicações web em vários ambientes, incluindo testes, homologação e produção.
+- Amazon CloudWatch.
+- Amazon CloudTrail.
+- Elastic Beanstalk.
+  
+  > Desta forma, teremos toda a infraestrutura monitorada, podendo enviar alertas em caso de problemas. Registro das ações realizadas nos serviços da AWS, tendo uma visão mais detalhada e em tempo real do que está acontecendo. Capacidade de identificar possíveis falhas de segurança ou atividades suspeitas. Também simplificamos o processo de deploy e gerenciamento da aplicação do Moodle no ambiente, incluindo testes, autalizações e versão e homologação.
   
 ## Arquitetura do ambiente  
   
-![aws-arquitetura](https://github.com/deciocferreira/AWS-Cloud-Project/assets/12403699/59756357-7a70-4e97-b504-170643f99f76)
+<image src="https://github.com/deciocferreira/AWS-Cloud-Project/assets/12403699/79215028-8898-4566-abc9-6d6a6f7de769" width="750" height="700">  
  
 ## Resultados esperados
   
