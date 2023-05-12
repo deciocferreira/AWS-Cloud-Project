@@ -36,9 +36,25 @@
   
   > Desta forma, teremos toda a infraestrutura monitorada, podendo enviar alertas em caso de problemas. Registro das ações realizadas nos serviços da AWS, tendo uma visão mais detalhada e em tempo real do que está acontecendo. Capacidade de identificar possíveis falhas de segurança ou atividades suspeitas. Também simplificamos o processo de deploy e gerenciamento da aplicação do Moodle no ambiente, incluindo testes, autalizações e versão e homologação.
   
-## Arquitetura do ambiente  
+## Arquitetura e fluxo do ambiente  
   
 <image src="https://github.com/deciocferreira/AWS-Cloud-Project/assets/12403699/d545746b-d70e-4f10-8c2b-9c9d1e1d3bd3" width="750" height="700"> 
+  
+- O usuário faz uma requisição para visualizar um vídeo no seu navegador.
+
+- A requisição chega ao Amazon CloudFront, que é um CDN que armazena os arquivos de mídia do site e permite que os usuários acessem esses arquivos com baixa latência.
+
+- O CloudFront verifica se o conteúdo solicitado está em seu cache e, se estiver, o entrega ao usuário. Caso contrário, o CloudFront solicita o arquivo do bucket S3.
+
+- O Amazon S3 armazena os arquivos de mídia e responde à solicitação do CloudFront, fornecendo o vídeo solicitado.
+
+- O CloudFront entrega o arquivo de vídeo ao usuário.
+
+- O Elastic Load Balancer (ALB) direciona a requisição para uma das instâncias EC2 que executam o aplicativo Moodle.
+
+- O Moodle serve o conteúdo de vídeo solicitado ao usuário.
+
+- Durante todo o processo, o Amazon CloudWatch monitora o desempenho da infraestrutura e a saúde das instâncias EC2 e outros recursos.  
  
 ## Resultados esperados
 
