@@ -21,17 +21,15 @@
   
 3. *Segurança*
   
-- VPC.  
-- Grupos de segurança no RDS e outro no EC2.
-- AWS WAF (Web Application Firewall).
-- AWS Shield.
+- VPC  
+- Grupos de segurança no RDS e outro no EC2
+- AWS Shield
   
   >  Assim aplicamos camadas de segurança para permitir apenas as conexões necessárias para o Moodle operar. Fora da AWS fica protegido contra ataques na camada de aplicação, como injeção de SQL ou cross-site scripting (XSS) e contra ataques DDoS (Distributed Denial of Service) e dentro abrangindo os elementos, permitindo que eles se comuniquem entre si e com a Internet de forma segura e isolada.
   
 4. *Monitoramento e deploy*
   
 - Amazon CloudWatch.
-- Amazon CloudTrail.
 - Elastic Beanstalk.
   
   > Desta forma, teremos toda a infraestrutura monitorada, podendo enviar alertas em caso de problemas. Registro das ações realizadas nos serviços da AWS, tendo uma visão mais detalhada e em tempo real do que está acontecendo. Capacidade de identificar possíveis falhas de segurança ou atividades suspeitas. Também simplificamos o processo de deploy e gerenciamento da aplicação do Moodle no ambiente, incluindo testes, autalizações e versão e homologação.
@@ -73,3 +71,11 @@
 - Backup e Recuperação de Desastres;
 
 - Redução de custos com infraestrutura e manutenção de servidores.
+
+## Proposta 
+
+Custo mensal: US$ 2,80
+
+Custo anual: US$ 33,60
+
+Calculadora: 
