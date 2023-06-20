@@ -1,4 +1,5 @@
-# AWS Cloud Project <image src="https://user-images.githubusercontent.com/12403699/234434276-e7cdcab8-c594-47a6-8862-7645e5740a2c.png" width="80" height="50">  
+<p align="center"><image src="https://github.com/deciocferreira/AWS-Cloud-Project/assets/12403699/a8d33565-9ca5-4981-8865-cbd29100785a" width="450" height="350"> 
+</p>
   
 ## Proposta de arquitetura para migração de uma plataforma de educação para AWS.
   
