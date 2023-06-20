@@ -36,8 +36,8 @@
   
 ## Arquitetura e fluxo do ambiente  
   
-<image src="https://github.com/deciocferreira/AWS-Cloud-Project/assets/12403699/d545746b-d70e-4f10-8c2b-9c9d1e1d3bd3" width="750" height="700"> 
-  
+<image src="https://github.com/deciocferreira/AWS-Cloud-Project/assets/12403699/1317bdf1-6c7c-4525-84eb-3eb3632ed36e" width="950" height="700"> 
+ 
 - O usuário faz uma requisição para visualizar um vídeo no seu navegador.
 
 - A requisição chega ao Amazon CloudFront, que é um CDN que armazena os arquivos de mídia do site e permite que os usuários acessem esses arquivos com baixa latência.
